@@ -20,6 +20,8 @@ const schema= new mongoose.Schema({
     },
 });
 
+const Customer=mongoose.model('Customer',schema);
+
 function validateCustomer(customer) {
     const schema = {
         name: Joi.string().min(5).max(50).required(),
@@ -30,4 +32,5 @@ function validateCustomer(customer) {
 }
 
 exports.userSchema=schema;
+exports.Customer=Customer;
 exports.validateCustomer=validateCustomer;
