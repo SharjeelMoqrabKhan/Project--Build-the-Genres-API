@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 routes.use(express.json());
 
 
-const Customer = mongoose.model('Customer', userSchema);
 
+const Customer = mongoose.model('Customer', userSchema);
 
 
 //get genres list
