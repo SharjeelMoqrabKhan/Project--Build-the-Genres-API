@@ -1,3 +1,4 @@
+const config = require('config');
 const Joi = require('joi')
 Joi.objectId=require('joi-objectid')(Joi);
 const express = require ('express');
@@ -11,6 +12,10 @@ const users = require('./routes/users');
 const auth = require('./routes/auth')
 const mongoose=require('mongoose');
 
+if(!config.get('jwtPrivateKey')){
+    console.log('Fatal error jwt not defined');
+    process.exit(1);
+}
 
 mongoose.connect('mongodb://localhost/vidly',{
     keepAlive: true,

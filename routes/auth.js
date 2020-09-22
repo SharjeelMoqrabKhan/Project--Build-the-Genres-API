@@ -1,3 +1,4 @@
+const config = require('config');
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
 const { User } = require('../model/userModel');
@@ -22,7 +23,7 @@ routes.post('/', async (req, res) => {
 
     if (!validPassword) return res.status(400).send('invalid email & password');
 
-    const token = jwt.sign({ _id: user._id }, 'jwtPrivateKey');
+    const token = jwt.sign({ _id: user._id }, config.get('jwtPrivateKey'));
     res.send(token);
 });
 
