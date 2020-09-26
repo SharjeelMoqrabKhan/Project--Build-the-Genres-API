@@ -1,4 +1,5 @@
 const { genreSchema, validateGenre } = require('../model/genreModel');
+const auth = require('../middlewear/auth')
 const express = require('express');
 const routes = express.Router();
 const mongoose = require('mongoose');
@@ -23,7 +24,7 @@ routes.get('/:id', async (req, res) => {
 });
 
 //post request
-routes.post('/', async (req, res) => {
+routes.post('/',auth, async (req, res) => {
     //validation
     const { error } = validateGenre(req.body);
     if (error) {
