@@ -1,8 +1,9 @@
 const { genreSchema, validateGenre } = require('../model/genreModel');
-const auth = require('../middlewear/auth')
+const auth = require('../middlewear/auth');
 const express = require('express');
 const routes = express.Router();
 const mongoose = require('mongoose');
+const admin = require('../middlewear/admin');
 routes.use(express.json());
 
 
@@ -54,7 +55,7 @@ routes.put('/:id', async (req, res) => {
 
 
 //delete 
-routes.delete('/:id', async (req, res) => {
+routes.delete('/:id',[auth,admin] ,async (req, res) => {
     const genre = await Genre.findByIdAndRemove(req.params.id)
     if (!genre) {
         return res.status(404).send('Not found');
