@@ -1,3 +1,5 @@
+require('express-async-errors');
+const winston = require('winston');
 const config = require('config');
 const Joi = require('joi')
 Joi.objectId=require('joi-objectid')(Joi);
@@ -12,6 +14,10 @@ const rantals = require('./routes/rental');
 const users = require('./routes/users');
 const auth = require('./routes/auth')
 const mongoose=require('mongoose');
+
+
+
+winston.add(winston.transports.File, {filename:'logfile.log'})
 
 if(!config.get('jwtPrivateKey')){
     console.log('Fatal error jwt not defined');
