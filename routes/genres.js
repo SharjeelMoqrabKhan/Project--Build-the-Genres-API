@@ -13,8 +13,13 @@ const Genre = mongoose.model('Genre', genreSchema);
 
 //get genres list
 routes.get('/', async (req, res) => {
-    const genres = await Genre.find().sort('name');
-    res.send(genres);
+    try {
+        const genres = await Genre.find().sort('name');
+        res.send(genres);
+    } catch (error) {
+        res.status(500).send('Something went wrong');
+    }
+
 });
 
 //get specific genres
@@ -25,7 +30,7 @@ routes.get('/:id', async (req, res) => {
 });
 
 //post request
-routes.post('/',auth, async (req, res) => {
+routes.post('/', auth, async (req, res) => {
     //validation
     const { error } = validateGenre(req.body);
     if (error) {
@@ -55,7 +60,7 @@ routes.put('/:id', async (req, res) => {
 
 
 //delete 
-routes.delete('/:id',[auth,admin] ,async (req, res) => {
+routes.delete('/:id', [auth, admin], async (req, res) => {
     const genre = await Genre.findByIdAndRemove(req.params.id)
     if (!genre) {
         return res.status(404).send('Not found');
