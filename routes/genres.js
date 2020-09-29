@@ -1,5 +1,6 @@
 const { genreSchema, validateGenre } = require('../model/genreModel');
 const auth = require('../middlewear/auth');
+const asyncMiddleWear = require('../middlewear/async')
 const express = require('express');
 const routes = express.Router();
 const mongoose = require('mongoose');
@@ -12,7 +13,7 @@ const Genre = mongoose.model('Genre', genreSchema);
 
 
 //get genres list
-routes.get('/', async (req, res,next) => {
+routes.get('/', asyncMiddleWear( async (req, res,next) => {
     try {
         const genres = await Genre.find().sort('name');
         res.send(genres);
@@ -20,17 +21,17 @@ routes.get('/', async (req, res,next) => {
         next(ex);
     }
 
-});
+}));
 
 //get specific genres
-routes.get('/:id', async (req, res) => {
+routes.get('/:id', asyncMiddleWear( async (req, res) => {
     const genre = await Genre.findById(req.params.id);
     if (!genre) return res.status(404).send('not found');
     res.send(genre);
-});
+}));
 
 //post request
-routes.post('/', auth, async (req, res) => {
+routes.post('/', auth, asyncMiddleWear( async (req, res) => {
     //validation
     const { error } = validateGenre(req.body);
     if (error) {
@@ -41,11 +42,11 @@ routes.post('/', auth, async (req, res) => {
     });
     genre = await genre.save();
     res.send(genre);
-});
+}));
 
 //update put request
 
-routes.put('/:id', async (req, res) => {
+routes.put('/:id', asyncMiddleWear( async (req, res) => {
     const { error } = validateGenre(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -56,17 +57,17 @@ routes.put('/:id', async (req, res) => {
     if (!genre) return res.status(404).send('The genre with the given ID was not found.');
 
     res.send(genre);
-});
+}));
 
 
 //delete 
-routes.delete('/:id', [auth, admin], async (req, res) => {
+routes.delete('/:id', [auth, admin], asyncMiddleWear( async (req, res) => {
     const genre = await Genre.findByIdAndRemove(req.params.id)
     if (!genre) {
         return res.status(404).send('Not found');
     }
 
     res.send(genre)
-});
+}));
 
 module.exports = routes;
