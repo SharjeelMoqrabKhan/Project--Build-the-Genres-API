@@ -1,5 +1,6 @@
 require('express-async-errors');
 const winston = require('winston');
+require('winston-mongodb');
 const config = require('config');
 const Joi = require('joi')
 Joi.objectId=require('joi-objectid')(Joi);
@@ -16,8 +17,18 @@ const auth = require('./routes/auth')
 const mongoose=require('mongoose');
 
 
+process.on('uncaughtException',(ex)=>{
+    console.log('Unexpexted exception');
+    winston.error(ex.message,ex);
+})
 
-winston.add(winston.transports.File, {filename:'logfile.log'})
+winston.add(winston.transports.File, {filename:'logfile.log'});
+winston.add(winston.transports.MongoDB,{
+db:'mongodb://localhost/vidly',
+leve:'error'
+});
+
+throw new Error('somthing failed during startup');
 
 if(!config.get('jwtPrivateKey')){
     console.log('Fatal error jwt not defined');

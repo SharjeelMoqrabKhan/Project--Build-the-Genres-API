@@ -13,7 +13,6 @@ const Genre = mongoose.model('Genre', genreSchema);
 
 //get genres list
 routes.get('/',  async (req, res,next) => {
-        throw new Error('could not get the genres');
         const genres = await Genre.find().sort('name');
         res.send(genres);
 });
