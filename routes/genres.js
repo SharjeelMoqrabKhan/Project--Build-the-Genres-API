@@ -12,12 +12,12 @@ const Genre = mongoose.model('Genre', genreSchema);
 
 
 //get genres list
-routes.get('/', async (req, res) => {
+routes.get('/', async (req, res,next) => {
     try {
         const genres = await Genre.find().sort('name');
         res.send(genres);
-    } catch (error) {
-        res.status(500).send('Something went wrong');
+    } catch (ex) {
+        next(ex);
     }
 
 });

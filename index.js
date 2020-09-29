@@ -2,6 +2,7 @@ const config = require('config');
 const Joi = require('joi')
 Joi.objectId=require('joi-objectid')(Joi);
 const express = require ('express');
+const error = require('./middlewear/error')
 const app=express();
 const home=require('./routes/home');
 const genres=require('./routes/genres');
@@ -35,6 +36,7 @@ app.use('/vidly.com/api/movies',movies);
 app.use('/vidly.com/api/rantals',rantals);
 app.use('/vidly.com/api/users',users);
 app.use('/vidly.com/api/auth',auth);
+app.use(error);
 
 
 const port=process.env.PORT||3000;
