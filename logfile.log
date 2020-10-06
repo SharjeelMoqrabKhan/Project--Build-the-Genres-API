@@ -42,3 +42,21 @@
 {"level":"info","message":"connected to monogoDB mongodb://localhost/vidly_test","timestamp":"2020-10-06T08:09:18.495Z"}
 {"level":"info","message":"3000 listening","timestamp":"2020-10-06T08:10:07.912Z"}
 {"level":"info","message":"connected to monogoDB mongodb://localhost/vidly_test","timestamp":"2020-10-06T08:10:07.982Z"}
+{"level":"info","message":"3000 listening","timestamp":"2020-10-06T08:39:14.700Z"}
+{"level":"info","message":"connected to monogoDB mongodb://localhost/vidly_test","timestamp":"2020-10-06T08:39:14.741Z"}
+{"level":"info","message":"3000 listening","timestamp":"2020-10-06T08:40:14.921Z"}
+{"level":"info","message":"connected to monogoDB mongodb://localhost/vidly_test","timestamp":"2020-10-06T08:40:14.963Z"}
+{"level":"info","message":"3000 listening","timestamp":"2020-10-06T08:41:14.760Z"}
+{"level":"info","message":"connected to monogoDB mongodb://localhost/vidly_test","timestamp":"2020-10-06T08:41:14.815Z"}
+{"level":"info","message":"3000 listening","timestamp":"2020-10-06T08:41:33.798Z"}
+{"level":"info","message":"connected to monogoDB mongodb://localhost/vidly_test","timestamp":"2020-10-06T08:41:33.840Z"}
+{"level":"info","message":"3000 listening","timestamp":"2020-10-06T08:43:23.422Z"}
+{"level":"info","message":"connected to monogoDB mongodb://localhost/vidly_test","timestamp":"2020-10-06T08:43:23.462Z"}
+{"level":"info","message":"3000 listening","timestamp":"2020-10-06T08:44:00.911Z"}
+{"level":"info","message":"connected to monogoDB mongodb://localhost/vidly_test","timestamp":"2020-10-06T08:44:00.954Z"}
+{"level":"info","message":"3000 listening","timestamp":"2020-10-06T08:45:36.050Z"}
+{"level":"info","message":"connected to monogoDB mongodb://localhost/vidly_test","timestamp":"2020-10-06T08:45:36.086Z"}
+{"level":"info","message":"3000 listening","timestamp":"2020-10-06T08:45:53.878Z"}
+{"level":"info","message":"connected to monogoDB mongodb://localhost/vidly_test","timestamp":"2020-10-06T08:45:53.942Z"}
+{"level":"info","message":"3000 listening","timestamp":"2020-10-06T08:46:23.904Z"}
+{"level":"info","message":"connected to monogoDB mongodb://localhost/vidly_test","timestamp":"2020-10-06T08:46:23.942Z"}

@@ -21,7 +21,6 @@ describe('/api/genres', () => {
             expect(res.body.some(g => g.name === 'genre2')).toBeTruthy();
         });
     });
-
     describe('GET /:id', () => {
         it('should return a valid genre id if exsists', async () => {
             const genre = new Genre({ name: 'genre1' });
@@ -30,6 +29,14 @@ describe('/api/genres', () => {
            const res = await request(server).get('/vidly.com/api/genres/' + genre._id);
            expect(res.status).toBe(200);
            expect(res.body).toHaveProperty('name',genre.name);
+           
+        });
+    });
+
+    describe('GET /:id', () => {
+        it('should return a 404 if genre id if not exsists', async () => {
+           const res = await request(server).get('/vidly.com/api/genres/1');
+           expect(res.status).toBe(404);
            
         });
     });

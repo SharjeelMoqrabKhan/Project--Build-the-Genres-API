@@ -9,7 +9,7 @@ routes.use(express.json());
 
 
 const Genre = mongoose.model('Genre', genreSchema);
-
+const validObjectId = require('../middlewear/validateObjectId');
 
 //get genres list
 routes.get('/',  async (req, res,next) => {
@@ -18,7 +18,7 @@ routes.get('/',  async (req, res,next) => {
 });
 
 //get specific genres
-routes.get('/:id',async (req, res) => {
+routes.get('/:id',validObjectId,async (req, res) => {
     const genre = await Genre.findById(req.params.id);
     if (!genre) return res.status(404).send('not found');
     res.send(genre);
